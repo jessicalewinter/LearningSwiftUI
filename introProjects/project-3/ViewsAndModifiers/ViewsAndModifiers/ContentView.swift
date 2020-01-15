@@ -16,6 +16,18 @@ extension View {
     func watermarked(with text: String) -> some View {
         self.modifier(Watermark(text: text))
     }
+    
+    func largeTitleStyle() -> some View {
+        self.modifier(LargeTitle())
+    }
+}
+
+struct LargeTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.blue)
+    }
 }
 
 struct Watermark: ViewModifier {
@@ -57,10 +69,6 @@ struct CapsuleText: View {
 struct ContentView: View {
     @State var changeColor = true
     
-    var moto1: some View {
-        Text("hello cruel world")
-    }
-    
     var body: some View {
         VStack {
             Text("Gryffindor")
@@ -68,7 +76,7 @@ struct ContentView: View {
             Text("Hufflepuff")
             Text("Ravenclaw")
             Text("Slytherin")
-            moto1
+                .largeTitleStyle()
             CapsuleText(text: "Hello mama")
         }.blur(radius: 0)
     }

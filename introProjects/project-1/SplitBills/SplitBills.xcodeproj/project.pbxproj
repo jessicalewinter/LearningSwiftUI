@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0936C36A23CEC3480009CC1C /* NoTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0936C36923CEC3480009CC1C /* NoTipView.swift */; };
 		09AC795C23CE581E00B4865B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC795B23CE581E00B4865B /* AppDelegate.swift */; };
 		09AC795E23CE581E00B4865B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC795D23CE581E00B4865B /* SceneDelegate.swift */; };
 		09AC796023CE581E00B4865B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AC795F23CE581E00B4865B /* ContentView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0936C36923CEC3480009CC1C /* NoTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTipView.swift; sourceTree = "<group>"; };
 		09AC795823CE581E00B4865B /* SplitBills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitBills.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09AC795B23CE581E00B4865B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09AC795D23CE581E00B4865B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				09AC795B23CE581E00B4865B /* AppDelegate.swift */,
 				09AC795D23CE581E00B4865B /* SceneDelegate.swift */,
 				09AC795F23CE581E00B4865B /* ContentView.swift */,
+				0936C36923CEC3480009CC1C /* NoTipView.swift */,
 				09AC796123CE582100B4865B /* Assets.xcassets */,
 				09AC796623CE582100B4865B /* LaunchScreen.storyboard */,
 				09AC796923CE582100B4865B /* Info.plist */,
@@ -149,6 +152,7 @@
 				09AC795C23CE581E00B4865B /* AppDelegate.swift in Sources */,
 				09AC795E23CE581E00B4865B /* SceneDelegate.swift in Sources */,
 				09AC796023CE581E00B4865B /* ContentView.swift in Sources */,
+				0936C36A23CEC3480009CC1C /* NoTipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
