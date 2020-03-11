@@ -7,11 +7,16 @@
 //
 
 import SwiftUI
+// MARK:- TODO
+// Put a text view below the List so you can track and show the player’s score for a given root word. How you calculate score is down to you, but something involving number of words and their letter count would be reasonable.
+
+// MARK:- Code
 
 struct ContentView: View {
     @State private var usedWords: [String] = [String]()
-    @State private var rootWord: String = "kkk"
+    @State private var rootWord: String = ""
     @State private var newWord: String = ""
+    @State private var score: Int = 0
     
     //Error messages
     @State private var errorTitle: String = ""
@@ -25,22 +30,29 @@ struct ContentView: View {
         
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original")
+            newWord = ""
             return
         }
         
         guard isPossible(word: answer) else {
             wordError(title: "Word is not recognized", message: "Don't create new words! English plz")
+            newWord = ""
             return
         }
         
         guard isReal(word: answer) else {
             wordError(title: "Word is not possible", message: "You have to choose a real word")
+            newWord = ""
             return
         }
         
         usedWords.insert(answer, at: 0)
-        newWord = ""
-        print(usedWords)
+        countScore(word: word)
+    }
+    
+    func countScore(word: String) {
+        guard word.count >= 3 else { return }
+        score += word.count
     }
     
     func startGame() {
@@ -55,7 +67,11 @@ struct ContentView: View {
     }
     
     func isOriginal(word: String) -> Bool {
-        !usedWords.contains(word)
+        guard word != rootWord else {
+            return false
+        }
+        
+        return !usedWords.contains(word)
     }
     
     func isPossible(word: String) -> Bool {
@@ -72,6 +88,10 @@ struct ContentView: View {
     }
     
     func isReal(word: String) -> Bool {
+        guard word.count >= 3 else {
+            return false
+        }
+        
         let checker = UITextChecker()
         let range = NSRange(location: 0, length: word.utf16.count)
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
@@ -99,12 +119,20 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                
+                Text("\(score)")
             }
             .navigationBarTitle(rootWord)
             .onAppear(perform: startGame)
             .alert(isPresented: $showError) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
+            .navigationBarItems(leading: Button(action: {
+                print("Restart Game")
+                self.startGame()
+            }, label: {
+                Text("Start game")
+            }))
         }
     }
 }
