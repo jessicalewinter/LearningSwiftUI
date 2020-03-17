@@ -9,30 +9,59 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var animationAmount: CGFloat = 1
+    @State private var enabled: Bool = false
+    @State private var dragAmountText: CGSize = .zero
+    @State private var dragAmountSquare: CGSize = .zero
+    let letters = Array("Hello swift")
+    
+    
     
     var body: some View {
-        Button(action: {
-            print("You tapped me!")
-        }) {
-            Text("Tap here :D")
-        }
-        .padding(50)
-        .background(Color.yellow)
-        .foregroundColor(.black)
-        .clipShape(Circle())
-        .overlay(
-            Circle()
-                .stroke(Color.yellow)
-                .scaleEffect(animationAmount)
-                .opacity(Double(2 - animationAmount))
-                .animation(
-                    Animation.easeInOut(duration: 1)
-                    .repeatForever(autoreverses: false)
-            )
-        )
-        .onAppear {
-            self.animationAmount = 2
+        let colors = enabled ? [Color.red, Color.yellow] : [Color.yellow, Color.red]
+        
+        return NavigationView {
+            VStack {
+                HStack {
+                    ForEach(0..<letters.count) {
+                        Text(String(self.letters[$0]))
+                            .padding(5)
+                            .font(.title)
+                            .background(self.enabled ? Color.yellow : Color.red)
+                            .offset(self.dragAmountText)
+                            .animation(Animation.default.delay(Double($0)/20))
+                            .gesture(
+                                DragGesture()
+                                    .onChanged {
+                                        self.dragAmountText = $0.translation
+                                    }
+                                    .onEnded { _ in
+                                        self.dragAmountText = .zero
+                                        self.enabled.toggle()
+                                    }
+                        )
+                    }
+                }
+                
+                Spacer()
+                
+                LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomLeading)
+                    .frame(width: 200, height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .offset(dragAmountSquare)
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ (dragValue) in
+                                self.dragAmountSquare = dragValue.translation
+                            })
+                            .onEnded({ (_) in
+                                withAnimation(.spring()) {
+                                    self.dragAmountSquare = .zero
+                                    self.enabled.toggle()
+                                }
+                            })
+                )
+            }
+//            .navigationBarTitle("Animations")
         }
     }
 }
