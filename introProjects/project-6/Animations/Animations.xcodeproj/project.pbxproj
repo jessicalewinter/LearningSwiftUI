@@ -13,6 +13,7 @@
 		0999C42724196A9300823D09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0999C42624196A9300823D09 /* Assets.xcassets */; };
 		0999C42A24196A9400823D09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0999C42924196A9400823D09 /* Preview Assets.xcassets */; };
 		0999C42D24196A9400823D09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0999C42B24196A9400823D09 /* LaunchScreen.storyboard */; };
+		09F4CE1D242177E00046EFD8 /* UIColor+defaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F4CE1C242177E00046EFD8 /* UIColor+defaultColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0999C42924196A9400823D09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0999C42C24196A9400823D09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0999C42E24196A9400823D09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09F4CE1C242177E00046EFD8 /* UIColor+defaultColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+defaultColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				0999C42B24196A9400823D09 /* LaunchScreen.storyboard */,
 				0999C42E24196A9400823D09 /* Info.plist */,
 				0999C42824196A9400823D09 /* Preview Content */,
+				09F4CE1C242177E00046EFD8 /* UIColor+defaultColors.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0999C42124196A9000823D09 /* AppDelegate.swift in Sources */,
+				09F4CE1D242177E00046EFD8 /* UIColor+defaultColors.swift in Sources */,
 				0999C42324196A9000823D09 /* SceneDelegate.swift in Sources */,
 				0999C42524196A9000823D09 /* ContentView.swift in Sources */,
 			);

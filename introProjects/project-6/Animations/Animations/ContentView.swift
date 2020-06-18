@@ -35,14 +35,34 @@ struct ContentView: View {
                                         self.dragAmountText = $0.translation
                                     }
                                     .onEnded { _ in
-                                        self.dragAmountText = .zero
-                                        self.enabled.toggle()
+                                        withAnimation(.spring()) {
+                                            self.dragAmountText = .zero
+                                            self.enabled.toggle()
+                                        }
                                     }
-                        )
+                            )
                     }
                 }
                 
-                Spacer()
+                
+                
+                Button(action: {
+                    print("hello")
+                }) {
+                    HStack {
+                        Rectangle()
+                            .fill(Color.blue)
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                        
+                        Text("Delete")
+                        
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(LinearGradient(gradient: Gradient(colors: [.darkGreen, .lightGreen]), startPoint: .leading, endPoint: .trailing ))
+                    .cornerRadius(10)
+                }
                 
                 LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomLeading)
                     .frame(width: 200, height: 200)
