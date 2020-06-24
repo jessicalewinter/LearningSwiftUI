@@ -9,13 +9,13 @@ import SwiftUI
 
 struct HeroCell: View {
     var hero: Hero
+    var isHeroOk: Bool = true
+    var size: CGFloat = 100.0
     
     var body: some View {
         NavigationLink(destination: HeroDetail(hero: hero)) {
             Image(hero.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 100.0, height: 100.0)
+                .resizedToFill(width: size, height: size)
                 .background(Color.black)
                 .cornerRadius(15)
             

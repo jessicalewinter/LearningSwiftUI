@@ -23,6 +23,8 @@
 		0930C51624A2ABC100262DF1 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0930C51424A2ABC100262DF1 /* Hero.swift */; };
 		0937B2F724A3994A007854A4 /* HeroStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937B2F624A3994A007854A4 /* HeroStore.swift */; };
 		0937B2F824A3994A007854A4 /* HeroStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937B2F624A3994A007854A4 /* HeroStore.swift */; };
+		093A701B24A3C20B0085527E /* HeroCellContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093A701A24A3C20B0085527E /* HeroCellContent.swift */; };
+		093A701E24A3C7020085527E /* Image+resizedToFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093A701D24A3C7020085527E /* Image+resizedToFill.swift */; };
 		097841EB24A38CF100FB5BD5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097841EA24A38CF000FB5BD5 /* TestView.swift */; };
 		097841EC24A38CF100FB5BD5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097841EA24A38CF000FB5BD5 /* TestView.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,8 @@
 		0930C4FF24A2A1FB00262DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0930C51424A2ABC100262DF1 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		0937B2F624A3994A007854A4 /* HeroStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroStore.swift; sourceTree = "<group>"; };
+		093A701A24A3C20B0085527E /* HeroCellContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCellContent.swift; sourceTree = "<group>"; };
+		093A701D24A3C7020085527E /* Image+resizedToFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+resizedToFill.swift"; sourceTree = "<group>"; };
 		097841EA24A38CF000FB5BD5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,14 +117,12 @@
 		0930C4D624A2A1F400262DF1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				093A701C24A3C6EC0085527E /* Extensions */,
+				093A701924A3C1F30085527E /* Library */,
+				093A701824A3C1DB0085527E /* Test */,
+				093A701424A3C1930085527E /* Feature */,
 				0930C4D724A2A1F400262DF1 /* TestSwiftUIApp.swift */,
-				0930C4D824A2A1F400262DF1 /* HeroList.swift */,
-				0937B2F624A3994A007854A4 /* HeroStore.swift */,
-				090807C324A2BED3003C2807 /* HeroDetail.swift */,
-				090807C024A2BEA7003C2807 /* HeroCell.swift */,
-				0930C51424A2ABC100262DF1 /* Hero.swift */,
 				0930C4D924A2A1FB00262DF1 /* Assets.xcassets */,
-				097841EA24A38CF000FB5BD5 /* TestView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -169,6 +171,66 @@
 				0930C4FF24A2A1FB00262DF1 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		093A701424A3C1930085527E /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				093A701524A3C1AB0085527E /* Hero */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		093A701524A3C1AB0085527E /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				093A701724A3C1C30085527E /* Views */,
+				093A701624A3C1B40085527E /* Models */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		093A701624A3C1B40085527E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0930C51424A2ABC100262DF1 /* Hero.swift */,
+				0937B2F624A3994A007854A4 /* HeroStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		093A701724A3C1C30085527E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				090807C324A2BED3003C2807 /* HeroDetail.swift */,
+				090807C024A2BEA7003C2807 /* HeroCell.swift */,
+				0930C4D824A2A1F400262DF1 /* HeroList.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		093A701824A3C1DB0085527E /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				097841EA24A38CF000FB5BD5 /* TestView.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		093A701924A3C1F30085527E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				093A701A24A3C20B0085527E /* HeroCellContent.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		093A701C24A3C6EC0085527E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				093A701D24A3C7020085527E /* Image+resizedToFill.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,7 +390,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093A701E24A3C7020085527E /* Image+resizedToFill.swift in Sources */,
 				097841EB24A38CF100FB5BD5 /* TestView.swift in Sources */,
+				093A701B24A3C20B0085527E /* HeroCellContent.swift in Sources */,
 				0930C50224A2A1FB00262DF1 /* HeroList.swift in Sources */,
 				0930C50024A2A1FB00262DF1 /* TestSwiftUIApp.swift in Sources */,
 				0930C51524A2ABC100262DF1 /* Hero.swift in Sources */,
