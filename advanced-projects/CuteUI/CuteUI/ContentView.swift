@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    var rect = SmallRectangle()
     var body: some View {
-        Text("Hello, baby girl")
+        Text("mama ma")
     }
 }
 

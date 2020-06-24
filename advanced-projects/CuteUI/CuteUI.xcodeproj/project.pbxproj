@@ -16,6 +16,8 @@
 		097673AE249BAA1100A94376 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 097673AC249BAA1100A94376 /* LaunchScreen.storyboard */; };
 		097673B9249BAA1100A94376 /* CuteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097673B8249BAA1100A94376 /* CuteUITests.swift */; };
 		097673C4249BAA1100A94376 /* CuteUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097673C3249BAA1100A94376 /* CuteUIUITests.swift */; };
+		097673D2249BB00E00A94376 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097673D1249BB00E00A94376 /* Hero.swift */; };
+		097673D4249BDD6800A94376 /* MakeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097673D3249BDD6800A94376 /* MakeString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		097673BF249BAA1100A94376 /* CuteUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuteUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		097673C3249BAA1100A94376 /* CuteUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuteUIUITests.swift; sourceTree = "<group>"; };
 		097673C5249BAA1100A94376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		097673D1249BB00E00A94376 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		097673D3249BDD6800A94376 /* MakeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				0976739E249BAA0900A94376 /* AppDelegate.swift */,
 				097673A0249BAA0900A94376 /* SceneDelegate.swift */,
 				097673A5249BAA0900A94376 /* ContentView.swift */,
+				097673D1249BB00E00A94376 /* Hero.swift */,
+				097673D3249BDD6800A94376 /* MakeString.swift */,
 				097673A7249BAA1100A94376 /* Assets.xcassets */,
 				097673AC249BAA1100A94376 /* LaunchScreen.storyboard */,
 				097673AF249BAA1100A94376 /* Info.plist */,
@@ -270,6 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097673D4249BDD6800A94376 /* MakeString.swift in Sources */,
+				097673D2249BB00E00A94376 /* Hero.swift in Sources */,
 				0976739F249BAA0900A94376 /* AppDelegate.swift in Sources */,
 				097673A4249BAA0900A94376 /* CuteUI.xcdatamodeld in Sources */,
 				097673A6249BAA0900A94376 /* ContentView.swift in Sources */,
