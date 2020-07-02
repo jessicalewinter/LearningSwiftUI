@@ -9,35 +9,59 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var numbers: [Int] = []
-    @State var currentNumber = UserDefaults.standard.integer(forKey: "Tap")
-    @State var user: User = User(firstName: "Lore", lastName: "Lee")
+    @ObservedObject var expenses = Expenses()
+    @State var showingAdd = false
+    @State var color: Color = .black
+    
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(numbers, id: \.self) {
-                        Text("\($0)")
+                    ForEach(expenses.items) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                            }
+                            Spacer()
+                            
+                            self.style(value: item.amount)
+                        }
                     }
-                    .onDelete(perform: removeRows(at:))
-                }
-                Button("Add number && Save Number") {
-                    self.numbers.append(self.currentNumber)
-                    self.currentNumber += 1
-                    
-                    let encoder = JSONEncoder()
-                    guard let data = try? encoder.encode(self.user) else { return }
-                    
-                    UserDefaults.standard.set(self.currentNumber, forKey: "Tap")
-                    UserDefaults.standard.set(data, forKey: "UserData")
+                    .onDelete(perform: removeItems(at:))
                 }
             }
-            .navigationBarItems(trailing: EditButton())
-        }
+            .navigationBarTitle("iExpense")
+            .navigationBarItems(
+                leading: EditButton(),
+                trailing: Button(action: {
+                    self.showingAdd = true
+                }) {
+                    Image(systemName: "plus")
+                })
+            }
+            .sheet(isPresented: $showingAdd) {
+                AddView(expenses: self.expenses)
+            }
     }
     
-    func removeRows(at offsets: IndexSet) {
-        numbers.remove(atOffsets: offsets)
+    func removeItems(at offset: IndexSet) {
+        expenses.items.remove(atOffsets: offset)
+    }
+    
+    func setStyle(color: Color, text: String) -> Text {
+        return Text(text).foregroundColor(color)
+    }
+    
+    func style(value: Int) -> Text {
+        if value < 10 {
+            return setStyle(color: .red, text: "$\(value)")
+        } else if value > 10 && value < 100 {
+            return setStyle(color: .yellow, text: "$\(value)")
+        } else {
+            return setStyle(color: .green, text: "$\(value)")
+        }
     }
 }
 
