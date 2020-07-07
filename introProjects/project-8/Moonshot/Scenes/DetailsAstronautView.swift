@@ -8,8 +8,29 @@
 
 import SwiftUI
 
+struct AstronautMissions {
+    let id: Int
+    let mission: Mission
+}
+
 struct DetailsAstronautView: View {
     let astronaut: Astronaut
+    let missions: [AstronautMissions]
+    
+    init(astronaut: Astronaut) {
+        self.astronaut = astronaut
+        var matches: [AstronautMissions] = []
+        
+        for mission in DefaultFiles.missions {
+            for member in mission.crew {
+                if astronaut.id == member.name {
+                    matches.append(AstronautMissions(id: mission.id, mission: mission))
+                }
+            }
+        }
+        
+        self.missions = matches
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,6 +43,23 @@ struct DetailsAstronautView: View {
                     Text(self.astronaut.description)
                         .padding()
                         .layoutPriority(1)
+                    
+                    ForEach(self.missions, id: \.id) { astronauts in
+                        HStack {
+                            Image(astronauts.mission.imageName)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 44, height: 44)
+                            VStack(alignment: .leading) {
+                                Text(astronauts.mission.displayName)
+                                    .font(.headline)
+                                Text(astronauts.mission.formattedDate)
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                    }
                 }
             }
             .navigationBarTitle(Text(self.astronaut.name), displayMode: .inline)
@@ -30,9 +68,7 @@ struct DetailsAstronautView: View {
 }
 
 struct DetailsAstronautView_Previews: PreviewProvider {
-    static let astronauts: [Astronaut] = try! Bundle.main.decode(JSONFiles.astronauts.path)
-    
     static var previews: some View {
-        DetailsAstronautView(astronaut: astronauts[0])
+        DetailsAstronautView(astronaut: DefaultFiles.astronauts[0])
     }
 }

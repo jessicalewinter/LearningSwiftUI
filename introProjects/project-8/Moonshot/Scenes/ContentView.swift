@@ -8,16 +8,6 @@
 
 import SwiftUI
 
-struct Person: Codable {
-    var name: String
-    var address: Address
-}
-
-struct Address: Codable {
-    var street: String
-    var city: String
-}
-
 enum JSONFiles {
     case astronauts
     case missions
@@ -32,14 +22,18 @@ enum JSONFiles {
     }
 }
 
+struct DefaultFiles {
+    static let astronauts: [Astronaut] = try! Bundle.main.decode(JSONFiles.astronauts.path)
+    static let missions: [Mission] = try! Bundle.main.decode(JSONFiles.missions.path)
+}
+
 struct ContentView: View {
-    let astronauts: [Astronaut] = try! Bundle.main.decode(JSONFiles.astronauts.path)
-    let missions: [Mission] = try! Bundle.main.decode(JSONFiles.missions.path)
+    @State var toggleDate: Bool = false
     
     var body: some View {
         NavigationView {
-            List(missions) { mission in
-                NavigationLink(destination: DetailMissionView(mission: mission, astronauts: self.astronauts)) {
+            List(DefaultFiles.missions) { mission in
+                NavigationLink(destination: DetailMissionView(mission: mission, astronauts: DefaultFiles.astronauts)) {
                     Image(mission.imageName)
                         .resizable()
                         .scaledToFit()
@@ -47,12 +41,34 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
                             .font(.headline)
-                        Text(mission.formattedDate)
+                        if self.toggleDate {
+                            withAnimation {
+                                Text(self.createFormattedString(crews: mission.crew))
+                            }
+                        } else {
+                            withAnimation {
+                                Text(mission.formattedDate)
+                            }
+                        }
                     }
                 }
             }
-        .navigationBarTitle("Moonshot")
+            .navigationBarTitle("Moonshot")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.toggleDate.toggle()
+                }, label: {
+                    self.toggleDate ? Text("Show Launch Date") : Text("Show crew")
+                }))
         }
+    }
+    
+    func createFormattedString(crews: [Mission.CrewMembers]) -> String {
+        var joinedString = ""
+        for crew in crews {
+            joinedString.append("\(crew.name.capitalized), ")
+        }
+        return joinedString
     }
 }
 
