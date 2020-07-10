@@ -22,7 +22,7 @@ struct CheckoutView: View {
                         .scaledToFit()
                         .frame(width: geometry.size.width)
                     
-                    Text("Your total cost is \(self.order.cost, specifier: "%.2f")")
+                    Text("Your total cost is \(self.order.item.cost, specifier: "%.2f")")
                         .font(.title)
                     
                     Button("Place order") {
@@ -46,7 +46,7 @@ struct CheckoutView: View {
         
         do {
             let encoder = JSONEncoder()
-            let encode = try encoder.encode(order)
+            let encode = try encoder.encode(order.item)
             request.httpBody = encode
         } catch {
             print("Could not encode order data")
@@ -64,7 +64,7 @@ struct CheckoutView: View {
             
             do {
                 let decoder = JSONDecoder()
-                let decoded = try decoder.decode(Order.self, from: data)
+                let decoded = try decoder.decode(OrderItem.self, from: data)
                 self.confirmationMessage = "Your order for \(decoded.quantity) x \(Order.types[decoded.type].rawValue) cupcakes is on its way!"
                 self.showingConfirmation = true
             } catch {
@@ -72,7 +72,6 @@ struct CheckoutView: View {
             }
         }
         dataTask.resume()
-        
     }
 }
 

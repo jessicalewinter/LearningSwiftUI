@@ -15,28 +15,28 @@ struct CupcakesView: View {
         NavigationView {
             Form {
                 Section {
-                    Picker(selection: $order.type, label: Text("Choose your flavour")) {
+                    Picker(selection: $order.item.type, label: Text("Choose your flavour")) {
                         ForEach(0..<Order.types.count, id: \.self) {
                             Text(Order.types[$0].rawValue.capitalized)
                         }
                     }
                     
-                    Stepper(value: $order.quantity, in: 3...20) {
-                        Text("Number of cakes: \(order.quantity)")
+                    Stepper(value: $order.item.quantity, in: 1...20) {
+                        Text("Number of cakes: \(order.item.quantity)")
                     }
                 }
                 
                 Section {
-                    Toggle(isOn: $order.specialRequest.animation()) {
+                    Toggle(isOn: $order.item.specialRequest.animation()) {
                         Text("Any special requests?")
                     }
                     
-                    if order.specialRequest {
-                        Toggle(isOn: $order.extraFrosting) {
+                    if order.item.specialRequest {
+                        Toggle(isOn: $order.item.extraFrosting) {
                             Text("Add extra frosting")
                         }
                         
-                        Toggle(isOn: $order.addSprinkles) {
+                        Toggle(isOn: $order.item.addSprinkles) {
                             Text("Add extra sprinkles")
                         }
                     }
